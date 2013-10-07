@@ -1,36 +1,52 @@
 中文说明：
-###δ���ɵ�����
-1.reactor��shutdown����
-2.monitor�߳��޷���������ֹ
-3.senddefaultimpl��forѭ����������
-4.sendcallback, pullcallbackδʵ��
-5.�첽���ѣ��첽����δ��
-6.�鿴���Ķ����Ƿ���Ҫ����
-7.��sendresult�Ľ������Ͷ�pullresult�Ľ���(pullresult�Ѿ������ݴ���bytebuffer�У�����getint��storesize);
-8.nameserver��ַ��clientid�ֱ���mqclientapiimpl��mqclientfactory�Ĺ��캯����ȷ��
-9.mqclientfactory�еĶ�ʱ�¼���û�����ɶ�ʱ��ȡnamesrv�ͳ־û����ѽ��ȣ����ص�offstore��û��ʵ��)
-10.mqclientfactory�Ķ�ʱ�¼���ʹ��sleep��whileʵ�֡�����ʹ��boost�Ķ�ʱ���Ż���
-11.balance����û��ʵ��
+###未完成的设计
+1.reactor的shutdown方法
+2.monitor线程无法从外界终止
+3.senddefaultimpl的for循环次数问题
+4.sendcallback, pullcallback未实现
+5.异步消费，异步生产未做
+6.查看订阅队列是否需要更新
+7.对sendresult的解析，和对pullresult的解析(pullresult已经将数据存入bytebuffer中，可以getint出storesize);
+8.nameserver地址，clientid分别在mqclientapiimpl和mqclientfactory的构造函数中确定
+9.mqclientfactory中的定时事件，没有完成定时获取namesrv和持久化消费进度（相关的offstore类没有实现)
+10.mqclientfactory的定时事件，使用sleep，while实现。可以使用boost的定时器优化。
+11.balance操作没有实现
 
-###����˵��
-��������ʹ����libevent��boost��jsoncpp�������⡣
-1.$BOOST_HOME: boost����ѹ����·���������õ���1.42.0�汾��
-2.$LIBEVENT_INCLUDE: libevent����������ͷ�ļ�·����$LIBEVENT_LIBS: libevent�������Ķ�̬��·�����������뷽������google��vs2005 ����libevent
-3.$JSONCPP_INCLUDE: JSONCPP����������ͷ�ļ�·����$JSONCPP_LIBS: jsoncpp�������Ķ�̬��·����
 
-###����˵��
-������Ϊmetaq��C++�ͻ��ˣ�Ŀǰʵ�ֵĹ�����ͬ��������Ϣ��������Ϣ�����漰��ͨ�Ÿ�ʽ�У�sendmessage��pullmessage������topic��ȡ·����Ϣ������������Ϣ��
-ʹ��libevnet��Ϊ����ͨ�ŷ������ܣ�ͨ���Կ�д�¼����ж����ӳɹ������ɶ��¼�����������������ʱ�¼�����ʱ���������첽��ʱ�����ͳ�ʱδʹ�������������Ĵ�����ʵ��һ���첽�ĸ߲���������
-Ϊ�˿�ƽ̨��������ʹ����boost�������ɶ��߳����ƣ��Լ����صĻ�����������������ʹ��unorder_map��Ϊ������
-ʹ��jsoncpp��Ϊ���л������⣬���ڻ����Ϸ�װcjsonobject������ʵ�ָ��Ӷ��������������л��ͷ����л�������
+###编译说明
+本方案中使用了libevent，boost，jsoncpp第三方库。
+1.$BOOST_HOME: boost库解压后的路径。我是用的是1.42.0版本。
+2.$LIBEVENT_INCLUDE: libevent库编译后的头文件路径。$LIBEVENT_LIBS: libevent编译后的动态库路径。具体编译方法可以google：vs2005 编译libevent
+3.$JSONCPP_INCLUDE: JSONCPP库编译后的头文件路径。$JSONCPP_LIBS: jsoncpp编译后的动态库路径。
 
-###�ļ���������˵��
-����Դ������srcĿ¼��
-./tools һЩ���߶��󣬱���atomicinteger���ṩԭ�Ӳ�����int����clientevent��libevent���¼��ķ�װ����countdown��
-./socket channel��Ϊ��socket�ķ�װ�����˷�������ַ��socket��fd�⣬����һ����������
-./jasonserialize json���л������л����ࡣ��Ҫ���л�������Ҫ�̳д���
-./boostprebuild ����Ϊboost����ҪԤ�������ļ�����Ҫ���߳̿⣩
-./bytebuffer ��c++ʵ�ֵ�Bytebuffer������get��put��int���ͺ�char���顣��������չ�����������͡�Byte�࣬Ϊ��װ��char���飬�൱��java��byte[]
-./channeltable ����channel��������keyΪ��������ַ��valueΪ��Ӧ��channel��
-./unitest һϵ�в����ļ�������unitestfac.cppΪ��Ҫ�ġ�����java��example��simpleд�ġ���send��pull����
-ʣ�µ��ļ��к��ļ�����java����һ�£�������׸��
+
+###方案说明
+本方案为metaq的C++客户端，目前实现的功能有同步发送消息和消费消息。所涉及的通信格式有：sendmessage，pullmessage，根据topic获取路由信息，发送心跳信息。
+使用libevnet作为网络通信服务框架，通过对可写事件（判断连接成功），可读事件（有数据来），超时事件（定时器，负责异步超时处理和长时未使用连接清理）的处理，实现一个异步的高并发服务。
+为了跨平台，本方案使用了boost库来完成多线程设计，以及相关的互斥锁和条件量。并使用unorder_map作为容器。
+使用jsoncpp作为序列化方法库，并在基础上封装cjsonobject对象，实现复杂对象，容器的序列化和反序列化方法。
+
+
+###文件名及对象说明
+所有源码均在src目录下
+./tools 一些工具对象，比如atomicinteger（提供原子操作的int），clientevent（libevent的事件的封装），countdown类
+./socket channel类为对socket的封装，除了服务器地址，socket的fd外，还有一个读缓冲区
+./jasonserialize json序列化反序列化的类。需要序列化的类需要继承此类
+./boostprebuild 里面为boost库需要预编译的文件（主要是线程库）
+./bytebuffer 用c++实现的Bytebuffer，可以get，put，int类型和char数组。并可以扩展其他变量类型。Byte类，为封装的char数组，相当于java的byte[]
+./channeltable 存放channel的容器，key为服务器地址，value为对应的channel。
+./unitest 一系列测试文件，其中unitestfac.cpp为主要的。仿照java中example的simple写的。对send和pull测试
+剩下的文件夹和文件名与java基本一致，不再做赘述
+
+Description in English:
+###How to compile
+In this project, libevent, boost, jsoncpp have been taken into use.
+So, you should complied this libs at first.
+
+###What is this project
+1. This project is a client for Metaq and programmed in C++. Metaq is a distributed publish-subscribe messaging system like Apache Kafka, and 
+widely used in activity stream data and database synchronization in alibaba-inc.
+2. In Metaq, the clients are constituted of many computers, producing message or consuming message. The servers are created to store the message and 
+make sure the message read and writen in order. 
+3. In this project, thread libs, containers like unorderd_map in Boost has been taken into use. And, the libevent libs act as a
+asynchronous network communication framework by executing a callback function when an IO event occurs.
