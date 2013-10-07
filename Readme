@@ -1,35 +1,36 @@
-###Î´Íê³ÉµÄÉè¼Æ
-1.reactorµÄshutdown·½·¨
-2.monitorÏß³ÌÎÞ·¨´ÓÍâ½çÖÕÖ¹
-3.senddefaultimplµÄforÑ­»·´ÎÊýÎÊÌâ
-4.sendcallback, pullcallbackÎ´ÊµÏÖ
-5.Òì²½Ïû·Ñ£¬Òì²½Éú²úÎ´×ö
-6.²é¿´¶©ÔÄ¶ÓÁÐÊÇ·ñÐèÒª¸üÐÂ
-7.¶ÔsendresultµÄ½âÎö£¬ºÍ¶ÔpullresultµÄ½âÎö(pullresultÒÑ¾­½«Êý¾Ý´æÈëbytebufferÖÐ£¬¿ÉÒÔgetint³östoresize);
-8.nameserverµØÖ·£¬clientid·Ö±ðÔÚmqclientapiimplºÍmqclientfactoryµÄ¹¹Ôìº¯ÊýÖÐÈ·¶¨
-9.mqclientfactoryÖÐµÄ¶¨Ê±ÊÂ¼þ£¬Ã»ÓÐÍê³É¶¨Ê±»ñÈ¡namesrvºÍ³Ö¾Ã»¯Ïû·Ñ½ø¶È£¨Ïà¹ØµÄoffstoreÀàÃ»ÓÐÊµÏÖ)
-10.mqclientfactoryµÄ¶¨Ê±ÊÂ¼þ£¬Ê¹ÓÃsleep£¬whileÊµÏÖ¡£¿ÉÒÔÊ¹ÓÃboostµÄ¶¨Ê±Æ÷ÓÅ»¯¡£
-11.balance²Ù×÷Ã»ÓÐÊµÏÖ
+ä¸­æ–‡è¯´æ˜Žï¼š
+###Î´ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½
+1.reactorï¿½ï¿½shutdownï¿½ï¿½ï¿½ï¿½
+2.monitorï¿½ß³ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹
+3.senddefaultimplï¿½ï¿½forÑ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+4.sendcallback, pullcallbackÎ´Êµï¿½ï¿½
+5.ï¿½ì²½ï¿½ï¿½ï¿½Ñ£ï¿½ï¿½ì²½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½
+6.ï¿½é¿´ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½
+7.ï¿½ï¿½sendresultï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½pullresultï¿½Ä½ï¿½ï¿½ï¿½(pullresultï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½bytebufferï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½getintï¿½ï¿½storesize);
+8.nameserverï¿½ï¿½Ö·ï¿½ï¿½clientidï¿½Ö±ï¿½ï¿½ï¿½mqclientapiimplï¿½ï¿½mqclientfactoryï¿½Ä¹ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½
+9.mqclientfactoryï¿½ÐµÄ¶ï¿½Ê±ï¿½Â¼ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½Ê±ï¿½ï¿½È¡namesrvï¿½Í³Ö¾Ã»ï¿½ï¿½ï¿½ï¿½Ñ½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½Øµï¿½offstoreï¿½ï¿½Ã»ï¿½ï¿½Êµï¿½ï¿½)
+10.mqclientfactoryï¿½Ä¶ï¿½Ê±ï¿½Â¼ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½sleepï¿½ï¿½whileÊµï¿½Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½boostï¿½Ä¶ï¿½Ê±ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½
+11.balanceï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Êµï¿½ï¿½
 
-###±àÒëËµÃ÷
-±¾·½°¸ÖÐÊ¹ÓÃÁËlibevent£¬boost£¬jsoncppµÚÈý·½¿â¡£
-1.$BOOST_HOME: boost¿â½âÑ¹ºóµÄÂ·¾¶¡£ÎÒÊÇÓÃµÄÊÇ1.42.0°æ±¾¡£
-2.$LIBEVENT_INCLUDE: libevent¿â±àÒëºóµÄÍ·ÎÄ¼þÂ·¾¶¡£$LIBEVENT_LIBS: libevent±àÒëºóµÄ¶¯Ì¬¿âÂ·¾¶¡£¾ßÌå±àÒë·½·¨¿ÉÒÔgoogle£ºvs2005 ±àÒëlibevent
-3.$JSONCPP_INCLUDE: JSONCPP¿â±àÒëºóµÄÍ·ÎÄ¼þÂ·¾¶¡£$JSONCPP_LIBS: jsoncpp±àÒëºóµÄ¶¯Ì¬¿âÂ·¾¶¡£
+###ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½libeventï¿½ï¿½boostï¿½ï¿½jsoncppï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¡£
+1.$BOOST_HOME: boostï¿½ï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½1.42.0ï¿½æ±¾ï¿½ï¿½
+2.$LIBEVENT_INCLUDE: libeventï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ä¼ï¿½Â·ï¿½ï¿½ï¿½ï¿½$LIBEVENT_LIBS: libeventï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½Ì¬ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë·½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½googleï¿½ï¿½vs2005 ï¿½ï¿½ï¿½ï¿½libevent
+3.$JSONCPP_INCLUDE: JSONCPPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ä¼ï¿½Â·ï¿½ï¿½ï¿½ï¿½$JSONCPP_LIBS: jsoncppï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½Ì¬ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½
 
-###·½°¸ËµÃ÷
-±¾·½°¸ÎªmetaqµÄC++¿Í»§¶Ë£¬Ä¿Ç°ÊµÏÖµÄ¹¦ÄÜÓÐÍ¬²½·¢ËÍÏûÏ¢ºÍÏû·ÑÏûÏ¢¡£ËùÉæ¼°µÄÍ¨ÐÅ¸ñÊ½ÓÐ£ºsendmessage£¬pullmessage£¬¸ù¾Ýtopic»ñÈ¡Â·ÓÉÐÅÏ¢£¬·¢ËÍÐÄÌøÐÅÏ¢¡£
-Ê¹ÓÃlibevnet×÷ÎªÍøÂçÍ¨ÐÅ·þÎñ¿ò¼Ü£¬Í¨¹ý¶Ô¿ÉÐ´ÊÂ¼þ£¨ÅÐ¶ÏÁ¬½Ó³É¹¦£©£¬¿É¶ÁÊÂ¼þ£¨ÓÐÊý¾ÝÀ´£©£¬³¬Ê±ÊÂ¼þ£¨¶¨Ê±Æ÷£¬¸ºÔðÒì²½³¬Ê±´¦ÀíºÍ³¤Ê±Î´Ê¹ÓÃÁ¬½ÓÇåÀí£©µÄ´¦Àí£¬ÊµÏÖÒ»¸öÒì²½µÄ¸ß²¢·¢·þÎñ¡£
-ÎªÁË¿çÆ½Ì¨£¬±¾·½°¸Ê¹ÓÃÁËboost¿âÀ´Íê³É¶àÏß³ÌÉè¼Æ£¬ÒÔ¼°Ïà¹ØµÄ»¥³âËøºÍÌõ¼þÁ¿¡£²¢Ê¹ÓÃunorder_map×÷ÎªÈÝÆ÷¡£
-Ê¹ÓÃjsoncpp×÷ÎªÐòÁÐ»¯·½·¨¿â£¬²¢ÔÚ»ù´¡ÉÏ·â×°cjsonobject¶ÔÏó£¬ÊµÏÖ¸´ÔÓ¶ÔÏó£¬ÈÝÆ÷µÄÐòÁÐ»¯ºÍ·´ÐòÁÐ»¯·½·¨¡£
+###ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªmetaqï¿½ï¿½C++ï¿½Í»ï¿½ï¿½Ë£ï¿½Ä¿Ç°Êµï¿½ÖµÄ¹ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½æ¼°ï¿½ï¿½Í¨ï¿½Å¸ï¿½Ê½ï¿½Ð£ï¿½sendmessageï¿½ï¿½pullmessageï¿½ï¿½ï¿½ï¿½ï¿½ï¿½topicï¿½ï¿½È¡Â·ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
+Ê¹ï¿½ï¿½libevnetï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Í¨ï¿½Å·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½Í¨ï¿½ï¿½ï¿½Ô¿ï¿½Ð´ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì²½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Ê±Î´Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ì²½ï¿½Ä¸ß²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+Îªï¿½Ë¿ï¿½Æ½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½boostï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ØµÄ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½unorder_mapï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+Ê¹ï¿½ï¿½jsoncppï¿½ï¿½Îªï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â£¬ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½ï¿½Ï·ï¿½×°cjsonobjectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö¸ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-###ÎÄ¼þÃû¼°¶ÔÏóËµÃ÷
-ËùÓÐÔ´Âë¾ùÔÚsrcÄ¿Â¼ÏÂ
-./tools Ò»Ð©¹¤¾ß¶ÔÏó£¬±ÈÈçatomicinteger£¨Ìá¹©Ô­×Ó²Ù×÷µÄint£©£¬clientevent£¨libeventµÄÊÂ¼þµÄ·â×°£©£¬countdownÀà
-./socket channelÀàÎª¶ÔsocketµÄ·â×°£¬³ýÁË·þÎñÆ÷µØÖ·£¬socketµÄfdÍâ£¬»¹ÓÐÒ»¸ö¶Á»º³åÇø
-./jasonserialize jsonÐòÁÐ»¯·´ÐòÁÐ»¯µÄÀà¡£ÐèÒªÐòÁÐ»¯µÄÀàÐèÒª¼Ì³Ð´ËÀà
-./boostprebuild ÀïÃæÎªboost¿âÐèÒªÔ¤±àÒëµÄÎÄ¼þ£¨Ö÷ÒªÊÇÏß³Ì¿â£©
-./bytebuffer ÓÃc++ÊµÏÖµÄBytebuffer£¬¿ÉÒÔget£¬put£¬intÀàÐÍºÍcharÊý×é¡£²¢¿ÉÒÔÀ©Õ¹ÆäËû±äÁ¿ÀàÐÍ¡£ByteÀà£¬Îª·â×°µÄcharÊý×é£¬Ïàµ±ÓÚjavaµÄbyte[]
-./channeltable ´æ·ÅchannelµÄÈÝÆ÷£¬keyÎª·þÎñÆ÷µØÖ·£¬valueÎª¶ÔÓ¦µÄchannel¡£
-./unitest Ò»ÏµÁÐ²âÊÔÎÄ¼þ£¬ÆäÖÐunitestfac.cppÎªÖ÷ÒªµÄ¡£·ÂÕÕjavaÖÐexampleµÄsimpleÐ´µÄ¡£¶ÔsendºÍpull²âÊÔ
-Ê£ÏÂµÄÎÄ¼þ¼ÐºÍÎÄ¼þÃûÓëjava»ù±¾Ò»ÖÂ£¬²»ÔÙ×ö×¸Êö
+###ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½srcÄ¿Â¼ï¿½ï¿½
+./tools Ò»Ð©ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ó£¬±ï¿½ï¿½ï¿½atomicintegerï¿½ï¿½ï¿½á¹©Ô­ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½intï¿½ï¿½ï¿½ï¿½clienteventï¿½ï¿½libeventï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ä·ï¿½×°ï¿½ï¿½ï¿½ï¿½countdownï¿½ï¿½
+./socket channelï¿½ï¿½Îªï¿½ï¿½socketï¿½Ä·ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½socketï¿½ï¿½fdï¿½â£¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+./jasonserialize jsonï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½à¡£ï¿½ï¿½Òªï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ì³Ð´ï¿½ï¿½ï¿½
+./boostprebuild ï¿½ï¿½ï¿½ï¿½Îªboostï¿½ï¿½ï¿½ï¿½ÒªÔ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ß³Ì¿â£©
+./bytebuffer ï¿½ï¿½c++Êµï¿½Öµï¿½Bytebufferï¿½ï¿½ï¿½ï¿½ï¿½ï¿½getï¿½ï¿½putï¿½ï¿½intï¿½ï¿½ï¿½Íºï¿½charï¿½ï¿½ï¿½é¡£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¡ï¿½Byteï¿½à£¬Îªï¿½ï¿½×°ï¿½ï¿½charï¿½ï¿½ï¿½é£¬ï¿½àµ±ï¿½ï¿½javaï¿½ï¿½byte[]
+./channeltable ï¿½ï¿½ï¿½ï¿½channelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½keyÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½valueÎªï¿½ï¿½Ó¦ï¿½ï¿½channelï¿½ï¿½
+./unitest Ò»Ïµï¿½Ð²ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½unitestfac.cppÎªï¿½ï¿½Òªï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ï¿½javaï¿½ï¿½exampleï¿½ï¿½simpleÐ´ï¿½Ä¡ï¿½ï¿½ï¿½sendï¿½ï¿½pullï¿½ï¿½ï¿½ï¿½
+Ê£ï¿½Âµï¿½ï¿½Ä¼ï¿½ï¿½Ðºï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½javaï¿½ï¿½ï¿½ï¿½Ò»ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¸ï¿½ï¿½
